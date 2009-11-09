@@ -20,22 +20,23 @@ phpManual = searchEngine "php.net" "http://php.net/manual-lookup.php?pattern="
 thePirateBay = searchEngine "The Pirate Bay" "http://thepiratebay.org/search/"
 
 customXPConfig = defaultXPConfig
-  { font = "xft:Andale Mono:bold"
-  , bgColor = "#000000"
-  , fgColor = "#eeeeee"
+  { font        = "xft:Terminus:bold"
+  , bgColor     = "#000000"
+  , fgColor     = "#eeeeee"
   , borderColor = "#000000"
   , historySize = 0
   }
 
-customKeymap =
+customKeys conf = mkKeymap conf (customKeyList conf)
+
+customKeyList conf =
   -- Default keys:
-  {-
   [ ("M-S-<Return>", spawn $ XMonad.terminal conf)
   , ("M-p", spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
   , ("M-S-p", spawn "gmrun")
   , ("M-S-c", kill)
   , ("M-<Space>", sendMessage NextLayout)
-  , ("M-n", refresh)
+--  , ("M-n", refresh)
   , ("M-<Tab>", windows W.focusDown)
   , ("M-j", windows W.focusDown)
   , ("M-k", windows W.focusUp)
@@ -50,9 +51,8 @@ customKeymap =
   , ("M-.", sendMessage (IncMasterN (-1)))
   , ("M-S-q", io (exitWith ExitSuccess))
   , ("M-q", broadcastMessage ReleaseResources >> restart "xmonad" True)
-  -}
   -- Additional keys:
-  [ ("M-<F3>", spawn "amixer set 'Master' toggle")
+  , ("M-<F3>", spawn "amixer set 'Master' toggle")
   , ("M-<F4>", spawn "amixer set 'Master' 5- unmute")
   , ("M-<F5>", spawn "amixer set 'Master' 5+ unmute")
   , ("M-<Backspace>", focusUrgent)
@@ -68,4 +68,11 @@ customKeymap =
   , ("M-s y", promptSearch customXPConfig youtube)
   , ("M-s p", promptSearch customXPConfig phpManual)
   , ("M-s t", promptSearch customXPConfig thePirateBay)
+  ]
+  ++
+  [("M-" ++ m ++ [k], windows $ f i)
+      | (i, k) <- zip (XMonad.workspaces conf) (['1' .. '9'] ++ ['0', '-'])
+      , (f, m) <- [ (W.greedyView, "")
+                  , (W.shift, "S-")
+                  ]
   ]
