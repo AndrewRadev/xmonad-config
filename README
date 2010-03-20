@@ -1,0 +1,2 @@
+Gotcha: If you modify any of the files in 'lib', xmonad won't detect the change
+and won't recompile as necessary. You'll need to touch 'xmonad.hs'.
