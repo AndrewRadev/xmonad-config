@@ -1,3 +1,4 @@
 set tags+=/home/andrew/src/xmonad/tags,/home/andrew/src/XMonadContrib/tags
 
-set makeprg=ghc\ xmonad.hs\ -ilib
+autocmd FileType haskell set makeprg=ghc\ xmonad.hs\ -ilib
+command! Console !ghci % -ilib

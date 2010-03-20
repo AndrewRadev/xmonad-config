@@ -9,18 +9,20 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.UrgencyHook
 
 import XMonad.Prompt
+import XMonad.Prompt.Shell
 import XMonad.Prompt.AppendFile
 
 import XMonad.Actions.Search
 
 import XMonad.Util.Run
 import XMonad.Util.EZConfig
+import XMonad.Util.Paste
 
-phpManual = searchEngine "php.net" "http://php.net/manual-lookup.php?pattern="
+phpManual    = searchEngine "php.net" "http://php.net/manual-lookup.php?pattern="
 thePirateBay = searchEngine "The Pirate Bay" "http://thepiratebay.org/search/"
 
 customXPConfig = defaultXPConfig
-  { font        = "xft:Terminus:bold"
+  { font        = "xft:Andale Mono:size=16"
   , bgColor     = "#000000"
   , fgColor     = "#eeeeee"
   , borderColor = "#000000"
@@ -32,7 +34,7 @@ customKeys conf = mkKeymap conf (customKeyList conf)
 customKeyList conf =
   -- Default keys:
   [ ("M-S-<Return>", spawn $ XMonad.terminal conf)
-  , ("M-p", spawn "exe=`dmenu_path | dmenu` && eval \"exec $exe\"")
+  , ("M-p", pasteSelection)
   , ("M-S-p", spawn "gmrun")
   , ("M-S-c", kill)
   , ("M-<Space>", sendMessage NextLayout)
@@ -55,19 +57,25 @@ customKeyList conf =
   , ("M-<F3>", spawn "amixer set 'Master' toggle")
   , ("M-<F4>", spawn "amixer set 'Master' 5- unmute")
   , ("M-<F5>", spawn "amixer set 'Master' 5+ unmute")
+  , ("M-<F8>", spawn "brightness down")
+  , ("M-<F9>", spawn "brightness up")
   , ("M-<Backspace>", focusUrgent)
   , ("M-n", appendFilePrompt customXPConfig "/home/andrew/NOTES")
+  , ("M-S-x", shellPrompt customXPConfig)
   , ("M-x g", spawn "gvim")
   , ("M-x f", spawn "firefox")
+  , ("M-x m", spawn "firefox gmail.com")
   , ("M-x t", spawn "thunar")
+  , ("M-x v", spawn "urxvt -e vifm")
   , ("M-x s", spawn "sonata")
-  , ("M-<Escape>", sendMessage ToggleStruts) 
+  , ("M-<Escape>", sendMessage ToggleStruts)
   , ("M-s g", promptSearch customXPConfig google)
   , ("M-s h", promptSearch customXPConfig hoogle)
   , ("M-s w", promptSearch customXPConfig wikipedia)
   , ("M-s y", promptSearch customXPConfig youtube)
   , ("M-s p", promptSearch customXPConfig phpManual)
   , ("M-s t", promptSearch customXPConfig thePirateBay)
+  , ("M-<F12>", spawn "scrot -e 'mv $f /home/andrew/images/shots/'")
   ]
   ++
   [("M-" ++ m ++ [k], windows $ f i)
