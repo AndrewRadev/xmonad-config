@@ -21,7 +21,13 @@ customConfig logger = defaultConfig
   , normalBorderColor  = "#cccccc"
   , focusedBorderColor = "#111199"
   , focusFollowsMouse  = False
-  , workspaces         = ["1:main", "2:skype", "3:music", "4:htop"] ++ map show [5..9]
+  , workspaces         =
+    [ "1:main"
+    , "2:skype"
+    , "3:music"
+    , "4:htop"
+    , "5:gimp"
+    ] ++ map show [6..9]
   , keys               = customKeys
   -- Custom hooks:
   , startupHook        = do
