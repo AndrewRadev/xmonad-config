@@ -4,6 +4,7 @@ import XMonad
 
 import XMonad.Util.Run      (spawnPipe)
 import XMonad.Util.EZConfig (additionalKeysP, checkKeymap)
+import XMonad.Hooks.FadeInactive (fadeInactiveLogHook)
 
 import Keys    (customKeys, customKeyList)
 import Log     (customLogHook)
@@ -26,13 +27,18 @@ customConfig logger = defaultConfig
     , "2:skype"
     , "3:music"
     , "4:htop"
-    , "5:gimp"
-    ] ++ map show [6..9]
+    , "5"
+    , "6"
+    , "7"
+    , "8:gimp"
+    , "9"
+    ]
   , keys               = customKeys
   -- Custom hooks:
   , startupHook        = do
       customStartupHook
       checkKeymap (customConfig logger) (customKeyList (customConfig logger))
+--  , logHook            = fadeInactiveLogHook 0.8 >> customLogHook logger
   , logHook            = customLogHook logger
   , manageHook         = customManageHook
   , layoutHook         = customLayoutHook

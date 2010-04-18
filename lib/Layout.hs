@@ -44,7 +44,7 @@ skypeLayout  = named "skype"
 --circleLayout = named "circle" $ magicFocus Circle
 --tabbedLayout = named "tabbed" $ (tabbed shrinkText defaultTheme)
 
-gimpLayout = named "Gimp"
+gimpLayout = named "gimp"
   $ withIM (1%6) (Role "gimp-toolbox")
   $ reflectHoriz
   $ withIM (1%6) (Role "gimp-dock") Full
