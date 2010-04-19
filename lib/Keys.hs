@@ -43,7 +43,7 @@ customKeyList conf =
   , ("M-j", windows W.focusDown)
   , ("M-k", windows W.focusUp)
   , ("M-m", windows W.focusMaster)
-  , ("M-<Return>", windows W.swapDown)
+  , ("M-<Return>", windows W.swapMaster)
   , ("M-S-j", windows W.swapDown)
   , ("M-S-k", windows W.swapUp)
   , ("M-h", sendMessage Shrink)

@@ -12,7 +12,7 @@ customLogHook logger = dynamicLogWithPP $ xmobarPP
   , ppLayout = \layout -> "<fc=#1111ee>" ++ layout ++ "</fc>"
   , ppSep    = "<fc=#ee1111> : </fc>"
   , ppWsSep  = "<fc=#ee1111>-</fc>"
-  -- , ppExtras = extraStuff
+--   , ppExtras = extraStuff
   }
 
 extraStuff :: [X (Maybe String)]
