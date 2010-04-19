@@ -16,6 +16,8 @@ customManageHook = manageDocks
     , className =? "Gimp"                            --> unfloat
     -- fix flash fullscreen
     , isFullscreen --> (doF W.focusDown <+> doFullFloat)
+    -- Keep Skype contact list master at all times
+    , className =? "Skype" --> doF W.swapDown
     ]
   <+> manageHook defaultConfig
   where
