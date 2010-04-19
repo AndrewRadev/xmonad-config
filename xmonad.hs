@@ -33,7 +33,6 @@ customConfig logger = defaultConfig
     , "8:gimp"
     , "9"
     , "0"
-    , "-"
     ]
   , keys               = customKeys
   -- Custom hooks:

@@ -8,6 +8,8 @@ import qualified XMonad.StackSet as W
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.UrgencyHook
 
+import XMonad.Layout.Magnifier as Mag
+
 import XMonad.Prompt
 import XMonad.Prompt.Shell
 import XMonad.Prompt.AppendFile
@@ -76,10 +78,13 @@ customKeyList conf =
   , ("M-s p", promptSearch customXPConfig phpManual)
   , ("M-s t", promptSearch customXPConfig thePirateBay)
   , ("M-<F12>", spawn "scrot -e 'mv $f /home/andrew/images/shots/'")
+  , ("M-=", sendMessage Mag.Toggle)
+  , ("M-S-=", sendMessage Mag.MagnifyMore)
+  , ("M--", sendMessage Mag.MagnifyLess)
   ]
   ++
   [("M-" ++ m ++ [k], windows $ f i)
-      | (i, k) <- zip (XMonad.workspaces conf) (['1' .. '9'] ++ ['0', '-'])
+      | (i, k) <- zip (XMonad.workspaces conf) (['1' .. '9'] ++ ['0'])
       , (f, m) <- [ (W.greedyView, "")
                   , (W.shift, "S-")
                   ]
