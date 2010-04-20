@@ -41,6 +41,6 @@ gimpLayout = named "gimp"
 
 customLayoutHook = smartBorders
                  $ avoidStruts
-                 $ onWorkspace "5:gimp" gimpLayout
+                 $ onWorkspace "8:gimp" gimpLayout
                  $ onWorkspace "2:skype" (tallLayout ||| fullLayout)
                  $ wideLayout ||| fullLayout
