@@ -37,10 +37,18 @@ gimpLayout = named "gimp"
   $ reflectHoriz
   $ withIM (1%6) (Role "gimp-dock") Full
 
--- First Skype window remains master at all times
+skypeLayout = named "skype"
+  $ Mag.magnifierOff
+  $ withIM (1%4) contactList
+  $ Tall 0 (3/100) (1/2)
+  where
+    contactList = (ClassName "Skype"
+      `And` (Not (Title "Options"))
+      `And` (Not (Role "Chats"))
+      `And` (Not (Role "CallWindowForm")))
 
 customLayoutHook = smartBorders
                  $ avoidStruts
                  $ onWorkspace "8:gimp" gimpLayout
-                 $ onWorkspace "2:skype" (tallLayout ||| fullLayout)
+                 $ onWorkspace "2:skype" (skypeLayout ||| fullLayout)
                  $ wideLayout ||| fullLayout
