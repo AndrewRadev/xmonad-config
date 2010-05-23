@@ -36,7 +36,9 @@ customKeys conf = mkKeymap conf (customKeyList conf)
 customKeyList conf =
   -- Default keys:
   [ ("M-S-<Return>", spawn $ XMonad.terminal conf)
-  , ("M-p", pasteSelection)
+  , ("M-p", spawn "mpc toggle")
+  , ("M-S-.", spawn "mpc next")
+  , ("M-S-,", spawn "mpc prev")
   , ("M-S-p", spawn "gmrun")
   , ("M-S-c", kill)
   , ("M-<Space>", sendMessage NextLayout)
