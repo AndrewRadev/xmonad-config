@@ -4,7 +4,6 @@ import XMonad
 
 import XMonad.Util.Run      (spawnPipe)
 import XMonad.Util.EZConfig (additionalKeysP, checkKeymap)
-import XMonad.Hooks.FadeInactive (fadeInactiveLogHook)
 
 import Keys    (customKeys, customKeyList)
 import Log     (customLogHook)
