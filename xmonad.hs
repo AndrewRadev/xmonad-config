@@ -19,8 +19,9 @@ main = do
 customConfig logger = defaultConfig
   { borderWidth        = 3
   , terminal           = "urxvt"
-  , normalBorderColor  = "#cccccc"
-  , focusedBorderColor = "#111199"
+--  , normalBorderColor  = "#cccccc"
+  , normalBorderColor  = "#000000"
+  , focusedBorderColor = "#ffffff"
   , focusFollowsMouse  = False
   , workspaces         =
     [ "1"
