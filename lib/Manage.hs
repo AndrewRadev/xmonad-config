@@ -9,8 +9,6 @@ import qualified XMonad.StackSet as W
 customManageHook = manageDocks
   <+> composeAll
     [ className =? "Skype"                           --> doF (W.shift "2")
-    , className =? "URxvt" <&&> appName =? "ncmpcpp" --> doF (W.shift "3")
-    , className =? "URxvt" <&&> appName =? "htop"    --> doF (W.shift "4")
     , className =? "Gimp"                            --> doF (W.shift "0")
     , className =? "Gimp"                            --> unfloat
     -- fix flash fullscreen
