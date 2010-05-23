@@ -11,12 +11,8 @@ import XMonad.Util.WindowProperties
 import qualified XMonad.StackSet as S
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Named
-import XMonad.Layout.SimpleFloat
-import XMonad.Layout.Grid
-import XMonad.Layout.Accordion
 import XMonad.Layout.Magnifier as Mag
 import XMonad.Layout.MagicFocus
-import XMonad.Layout.Roledex
 import XMonad.Layout.IM
 import XMonad.Layout.PerWorkspace
 
@@ -25,7 +21,7 @@ import XMonad.Hooks.ManageDocks
 basicLayout = Tall nmaster delta ratio
   where
     nmaster = 1
-    delta   = 3/100
+    delta   = 5/100
     ratio   = 1/2
 
 tallLayout   = named "tall" $ Mag.magnifierOff $ basicLayout
@@ -37,18 +33,14 @@ gimpLayout = named "gimp"
   $ reflectHoriz
   $ withIM (1%6) (Role "gimp-dock") Full
 
-skypeLayout = named "skype"
-  $ Mag.magnifierOff
-  $ withIM (1%4) contactList
-  $ Tall 0 (3/100) (1/2)
+imLayout = named "im" $ Tall nmaster delta ratio
   where
-    contactList = (ClassName "Skype"
-      `And` (Not (Title "Options"))
-      `And` (Not (Role "Chats"))
-      `And` (Not (Role "CallWindowForm")))
+    nmaster = 0
+    delta   = 5/100
+    ratio   = 1/2
 
 customLayoutHook = smartBorders
                  $ avoidStruts
-                 $ onWorkspace "8:gimp" gimpLayout
-                 $ onWorkspace "2:skype" (skypeLayout ||| fullLayout)
+                 $ onWorkspace "0" gimpLayout
+                 $ onWorkspace "2" (imLayout ||| fullLayout)
                  $ wideLayout ||| fullLayout

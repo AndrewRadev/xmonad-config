@@ -23,25 +23,22 @@ customConfig logger = defaultConfig
   , focusedBorderColor = "#111199"
   , focusFollowsMouse  = False
   , workspaces         =
-    [ "1:main"
-    , "2:skype"
-    , "3:music"
-    , "4:htop"
+    [ "1"
+    , "2"
+    , "3"
+    , "4"
     , "5"
     , "6"
     , "7"
-    , "8:gimp"
+    , "8"
     , "9"
     , "0"
     ]
   , keys               = customKeys
-  -- Custom hooks:
   , startupHook        = do
       customStartupHook
       checkKeymap (customConfig logger) (customKeyList (customConfig logger))
---  , logHook            = fadeInactiveLogHook 0.8 >> customLogHook logger
   , logHook            = customLogHook logger
   , manageHook         = customManageHook
   , layoutHook         = customLayoutHook
-  -- Custom keys:
   }

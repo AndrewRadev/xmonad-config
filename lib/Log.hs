@@ -8,8 +8,8 @@ import XMonad.Hooks.DynamicLog
 
 customLogHook logger = dynamicLogWithPP $ xmobarPP
   { ppOutput = hPutStrLn logger
---  , ppTitle  = const "" -- No title
-  , ppLayout = \layout -> "<fc=#1111ee>" ++ layout ++ "</fc>"
+  , ppTitle  = \s -> "<fc=#11ee11>" ++ s ++ "</fc>"
+  , ppLayout = \l -> "<fc=#1111ee>" ++ l ++ "</fc>"
   , ppSep    = "<fc=#ee1111> : </fc>"
   , ppWsSep  = "<fc=#ee1111>-</fc>"
 --   , ppExtras = extraStuff

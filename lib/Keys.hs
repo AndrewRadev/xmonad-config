@@ -18,13 +18,12 @@ import XMonad.Actions.Search
 
 import XMonad.Util.Run
 import XMonad.Util.EZConfig
-import XMonad.Util.Paste
 
 phpManual    = searchEngine "php.net" "http://php.net/manual-lookup.php?pattern="
 thePirateBay = searchEngine "The Pirate Bay" "http://thepiratebay.org/search/"
 
 customXPConfig = defaultXPConfig
-  { font        = "xft:Andale Mono:size=16"
+  { font        = "xft:Andale Mono:size=14"
   , bgColor     = "#000000"
   , fgColor     = "#eeeeee"
   , borderColor = "#000000"
@@ -42,7 +41,6 @@ customKeyList conf =
   , ("M-S-p", spawn "gmrun")
   , ("M-S-c", kill)
   , ("M-<Space>", sendMessage NextLayout)
---  , ("M-n", refresh)
   , ("M-<Tab>", windows W.focusDown)
   , ("M-j", windows W.focusDown)
   , ("M-k", windows W.focusUp)
@@ -64,14 +62,12 @@ customKeyList conf =
   , ("M-<F8>", spawn "brightness down")
   , ("M-<F9>", spawn "brightness up")
   , ("M-<Backspace>", focusUrgent)
-  , ("M-n", appendFilePrompt customXPConfig "/home/andrew/NOTES")
+  , ("M-n", appendFilePrompt customXPConfig "/home/andrew/Dropbox/gtd/in")
   , ("M-S-x", shellPrompt customXPConfig)
   , ("M-x g", spawn "gvim")
   , ("M-x f", spawn "firefox")
   , ("M-x m", spawn "firefox gmail.com")
   , ("M-x t", spawn "thunar")
-  , ("M-x v", spawn "urxvt -e vifm")
-  , ("M-x s", spawn "sonata")
   , ("M-<Escape>", sendMessage ToggleStruts)
   , ("M-s g", promptSearch customXPConfig google)
   , ("M-s h", promptSearch customXPConfig hoogle)
