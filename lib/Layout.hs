@@ -15,6 +15,7 @@ import XMonad.Layout.Magnifier as Mag
 import XMonad.Layout.MagicFocus
 import XMonad.Layout.IM
 import XMonad.Layout.PerWorkspace
+import XMonad.Layout.Tabbed
 
 import XMonad.Hooks.ManageDocks
 
@@ -24,9 +25,15 @@ basicLayout = Tall nmaster delta ratio
     delta   = 5/100
     ratio   = 1/2
 
-tallLayout   = named "tall" $ Mag.magnifierOff $ basicLayout
-wideLayout   = named "wide" $ Mag.magnifierOff $ Mirror basicLayout
-fullLayout   = named "full" $ Mag.magnifierOff $ Full
+tallLayout = named "tall" $ Mag.magnifierOff $ basicLayout
+wideLayout = named "wide" $ Mag.magnifierOff $ Mirror basicLayout
+fullLayout = named "full" $ Mag.magnifierOff $ tabbed shrinkText theme
+  where
+    theme = Theme
+      { fontName = "xft:Andale Mono:size=11"
+      , activeColor   = "#ff0000"
+      , inactiveColor = "#00ff00"
+      }
 
 gimpLayout = named "gimp"
   $ withIM (1%6) (Role "gimp-toolbox")
