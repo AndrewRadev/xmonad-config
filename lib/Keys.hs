@@ -75,6 +75,7 @@ customKeyList conf =
   , ("M-s y", promptSearch customXPConfig youtube)
   , ("M-s p", promptSearch customXPConfig phpManual)
   , ("M-s t", promptSearch customXPConfig thePirateBay)
+  , ("M-<F11>", spawn "grabc | xclip -i")
   , ("M-<F12>", spawn "scrot -e 'mv $f /home/andrew/images/shots/'")
   , ("M-=", sendMessage Mag.Toggle)
   , ("M-S-=", sendMessage Mag.MagnifyMore)
