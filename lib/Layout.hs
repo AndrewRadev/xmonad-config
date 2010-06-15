@@ -19,7 +19,9 @@ import XMonad.Layout.Tabbed
 
 import XMonad.Hooks.ManageDocks
 
-basicLayout = Tall nmaster delta ratio
+import XMonad.Util.Themes
+
+basicLayout = addTabs shrinkText tabTheme $ Tall nmaster delta ratio
   where
     nmaster = 1
     delta   = 5/100
@@ -27,13 +29,19 @@ basicLayout = Tall nmaster delta ratio
 
 tallLayout = named "tall" $ Mag.magnifierOff $ basicLayout
 wideLayout = named "wide" $ Mag.magnifierOff $ Mirror basicLayout
-fullLayout = named "full" $ Mag.magnifierOff $ tabbed shrinkText theme
-  where
-    theme = Theme
-      { fontName = "xft:Andale Mono:size=11"
-      , activeColor   = "#ff0000"
-      , inactiveColor = "#00ff00"
-      }
+fullLayout = named "full" $ Mag.magnifierOff $ tabbed shrinkText tabTheme
+
+tabTheme = (theme deiflTheme)
+--  { fontName            = "xft:Andale Mono:size=11"
+
+--  , activeColor         = "#eeeeee"
+--  , activeBorderColor   = "#eeeeee"
+--  , activeTextColor     = "#000000"
+
+--  , inactiveColor       = "#000000"
+--  , inactiveBorderColor = "#000000"
+--  , inactiveTextColor   = "#eeeeee"
+--  }
 
 gimpLayout = named "gimp"
   $ withIM (1%6) (Role "gimp-toolbox")
