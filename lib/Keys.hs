@@ -15,6 +15,7 @@ import XMonad.Prompt.Shell
 import XMonad.Prompt.AppendFile
 
 import XMonad.Actions.Search
+import XMonad.Actions.DynamicWorkspaces
 
 import XMonad.Util.Run
 import XMonad.Util.EZConfig
@@ -50,6 +51,7 @@ customKeyList conf =
   , ("M-S-k", windows W.swapUp)
   , ("M-h", sendMessage Shrink)
   , ("M-l", sendMessage Expand)
+  , ("M-r", renameWorkspace customXPConfig)
   , ("M-t", withFocused $ windows . W.sink)
   , ("M-,", sendMessage (IncMasterN 1))
   , ("M-.", sendMessage (IncMasterN (-1)))
@@ -83,9 +85,6 @@ customKeyList conf =
   , ("M--", sendMessage Mag.MagnifyLess)
   ]
   ++
-  [("M-" ++ m ++ [k], windows $ f i)
-      | (i, k) <- zip (XMonad.workspaces conf) (['1' .. '9'] ++ ['0'])
-      , (f, m) <- [ (W.greedyView, "")
-                  , (W.shift, "S-")
-                  ]
-  ]
+  zip (map (\s -> "M-" ++ show s) $ [1..9] ++ [0]) (map (withNthWorkspace W.greedyView) [0..])
+  ++
+  zip (map (\s -> "M-S-" ++ show s) $ [1..9] ++ [0]) (map (withNthWorkspace W.shift) [0..])
