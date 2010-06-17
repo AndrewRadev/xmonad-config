@@ -13,7 +13,7 @@ customManageHook = manageDocks
     , className =? "Gimp"   --> unfloat
     , className =? "Zenity" --> doFloat
     -- fix flash fullscreen
-    , isFullscreen --> (doF W.focusDown <+> doFullFloat)
+    , isFullscreen --> (doF W.focusDown <+> doFullFloat <+> doF W.focusUp)
     ]
   <+> manageHook defaultConfig
   where
