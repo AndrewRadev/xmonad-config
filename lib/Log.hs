@@ -1,9 +1,7 @@
 module Log where
 
 import System.IO
-import Control.Monad.State
 import XMonad.Core
-import XMonad.StackSet
 import XMonad.Hooks.DynamicLog
 
 customLogHook logger = dynamicLogWithPP $ xmobarPP

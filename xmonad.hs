@@ -3,7 +3,7 @@ module Main where
 import XMonad
 
 import XMonad.Util.Run      (spawnPipe)
-import XMonad.Util.EZConfig (additionalKeysP, checkKeymap)
+import XMonad.Util.EZConfig (checkKeymap)
 
 import Keys    (customKeys, customKeyList)
 import Log     (customLogHook)

@@ -1,8 +1,7 @@
-{-# LANGUAGE NoMonomorphismRestriction, TypeSynonymInstances, MultiParamTypeClasses, FlexibleContexts #-}
+{-# LANGUAGE NoMonomorphismRestriction #-}
 module Layout where
 
 import Data.Ratio ((%))
-import Control.Monad
 
 import XMonad
 import XMonad.Layout.LayoutModifier
@@ -12,7 +11,6 @@ import qualified XMonad.StackSet as S
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Named
 import XMonad.Layout.Magnifier as Mag
-import XMonad.Layout.MagicFocus
 import XMonad.Layout.IM
 import XMonad.Layout.PerWorkspace
 import XMonad.Layout.Tabbed
