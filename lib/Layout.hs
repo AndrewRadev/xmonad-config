@@ -32,16 +32,9 @@ wideLayout = named "wide" $ Mag.magnifierOff $ Mirror basicLayout
 fullLayout = named "full" $ Mag.magnifierOff $ tabbed shrinkText tabTheme
 
 tabTheme = (theme deiflTheme)
---  { fontName            = "xft:Andale Mono:size=11"
-
---  , activeColor         = "#eeeeee"
---  , activeBorderColor   = "#eeeeee"
---  , activeTextColor     = "#000000"
-
---  , inactiveColor       = "#000000"
---  , inactiveBorderColor = "#000000"
---  , inactiveTextColor   = "#eeeeee"
---  }
+  { fontName   = "-xos4-terminus-*-*-*-*-14-*-*-*-*-*-*-*"
+  , decoHeight = 18
+  }
 
 gimpLayout = named "gimp"
   $ withIM (1%6) (Role "gimp-toolbox")

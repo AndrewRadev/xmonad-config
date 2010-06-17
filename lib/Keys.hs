@@ -24,7 +24,7 @@ phpManual    = searchEngine "php.net" "http://php.net/manual-lookup.php?pattern=
 thePirateBay = searchEngine "The Pirate Bay" "http://thepiratebay.org/search/"
 
 customXPConfig = defaultXPConfig
-  { font        = "xft:Andale Mono:size=14"
+  { font        = "-xos4-terminus-*-*-*-*-14-*-*-*-*-*-*-*"
   , bgColor     = "#000000"
   , fgColor     = "#eeeeee"
   , borderColor = "#000000"
