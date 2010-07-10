@@ -20,6 +20,8 @@ import XMonad.Actions.DynamicWorkspaces
 import XMonad.Util.Run
 import XMonad.Util.EZConfig
 
+import Util
+
 phpManual    = searchEngine "php.net" "http://php.net/manual-lookup.php?pattern="
 thePirateBay = searchEngine "The Pirate Bay" "http://thepiratebay.org/search/"
 
@@ -35,8 +37,8 @@ customKeys conf = mkKeymap conf (customKeyList conf)
 
 customKeyList conf =
   -- Default keys:
-  [ ("M-S-<Return>", spawn $ XMonad.terminal conf)
-  , ("M-S-p", spawn "gmrun")
+  [ ("M-S-<Return>", spawnLog $ XMonad.terminal conf)
+  , ("M-S-p", spawnLog "gmrun")
   , ("M-S-c", kill)
   , ("M-<Space>", sendMessage NextLayout)
   , ("M-<Tab>", windows W.focusDown)
@@ -52,24 +54,28 @@ customKeyList conf =
   , ("M-,", sendMessage (IncMasterN 1))
   , ("M-.", sendMessage (IncMasterN (-1)))
   , ("M-S-q", io (exitWith ExitSuccess))
-  , ("M-q", broadcastMessage ReleaseResources >> restart "xmonad" True)
+  , ("M-q", do
+      spawn "killall xmobar"
+      broadcastMessage ReleaseResources
+      restart "xmonad" True
+    )
   -- Additional keys:
-  , ("M-p", spawn "mpc toggle")
-  , ("M-S-.", spawn "mpc next")
-  , ("M-S-,", spawn "mpc prev")
+  , ("M-p", spawnLogMessage "mpc toggle" "Toggle song")
+  , ("M-S-.", spawnLogMessage "mpc next" "Next song")
+  , ("M-S-,", spawnLogMessage "mpc prev" "Previous song")
   , ("M-r", renameWorkspace customXPConfig)
-  , ("M-<F3>", spawn "amixer set 'Master' toggle")
-  , ("M-<F4>", spawn "amixer set 'Master' 5- unmute")
-  , ("M-<F5>", spawn "amixer set 'Master' 5+ unmute")
-  , ("M-<F8>", spawn "brightness down")
-  , ("M-<F9>", spawn "brightness up")
+  , ("M-<F3>", spawnLogMessage "amixer set 'Master' toggle" "Toggle sound")
+  , ("M-<F4>", spawnLogMessage "amixer set 'Master' 5- unmute" "Sound 5-")
+  , ("M-<F5>", spawnLogMessage "amixer set 'Master' 5+ unmute" "Sound 5+")
+  , ("M-<F8>", spawnLogMessage "brightness down" "Brightness down")
+  , ("M-<F9>", spawnLogMessage "brightness up" "Brightness up")
   , ("M-<Backspace>", focusUrgent)
   , ("M-n", appendFilePrompt customXPConfig "/home/andrew/Dropbox/gtd/in")
   , ("M-S-x", shellPrompt customXPConfig)
-  , ("M-x g", spawn "gvim")
-  , ("M-x f", spawn "firefox")
-  , ("M-x m", spawn "firefox gmail.com")
-  , ("M-x t", spawn "thunar")
+  , ("M-x g", spawnLog "gvim")
+  , ("M-x f", spawnLog "firefox")
+  , ("M-x m", spawnLog "firefox gmail.com")
+  , ("M-x t", spawnLog "thunar")
   , ("M-<Escape>", sendMessage ToggleStruts)
   , ("M-s g", promptSearch customXPConfig google)
   , ("M-s h", promptSearch customXPConfig hoogle)
@@ -77,9 +83,10 @@ customKeyList conf =
   , ("M-s y", promptSearch customXPConfig youtube)
   , ("M-s p", promptSearch customXPConfig phpManual)
   , ("M-s t", promptSearch customXPConfig thePirateBay)
+  , ("M-S-l", spawn "echo Done > ~/.xmonad/status")
   , ("M-<F11>", spawn "grabc 2>&1 | xclip -i")
 --  , ("M-<F11>", spawn "zenity --info --text=\"`grabc 2>&1`\"")
-  , ("M-<F12>", spawn "scrot -e 'mv $f /home/andrew/images/shots/'")
+  , ("M-<F12>", spawnLogMessage "scrot -e 'mv $f /home/andrew/images/shots/'" "Screenshot taken")
   , ("M-=", sendMessage Mag.Toggle)
   , ("M-S-=", sendMessage Mag.MagnifyMore)
   , ("M--", sendMessage Mag.MagnifyLess)

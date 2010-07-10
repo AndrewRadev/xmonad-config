@@ -12,15 +12,16 @@ import Layout  (customLayoutHook)
 import Startup (customStartupHook)
 
 main = do
-  logger <- spawnPipe "xmobar"
-  xmonad (customConfig logger)
+  loggerTop    <- spawnPipe "xmobar ~/.xmobarrc-top"
+  loggerBottom <- spawnPipe "xmobar ~/.xmobarrc-bottom"
+  xmonad (customConfig loggerTop)
 
 customConfig logger = defaultConfig
   { borderWidth        = 3
   , terminal           = "urxvt"
---  , normalBorderColor  = "#cccccc"
-  , normalBorderColor  = "#000000"
-  , focusedBorderColor = "#ffffff"
+  , normalBorderColor  = "#cccccc"
+--  , normalBorderColor  = "#000000"
+  , focusedBorderColor = "#ee1111"
   , focusFollowsMouse  = False
   , workspaces         =
     [ "1"
