@@ -12,8 +12,8 @@ import Layout  (customLayoutHook)
 import Startup (customStartupHook)
 
 main = do
-  loggerTop    <- spawnPipe "xmobar ~/.xmobarrc-top"
-  loggerBottom <- spawnPipe "xmobar ~/.xmobarrc-bottom"
+  loggerTop    <- spawnPipe "xmobar ~/.xmonad/xmobarrc-top"
+  loggerBottom <- spawnPipe "xmobar ~/.xmonad/xmobarrc-bottom"
   xmonad (customConfig loggerTop)
 
 customConfig logger = defaultConfig

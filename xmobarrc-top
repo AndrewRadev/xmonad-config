@@ -1,0 +1,14 @@
+Config { font = "xft:Terminus:size=12"
+       , bgColor = "#000000"
+       , fgColor = "#eeeeee"
+       , position = Top
+       , lowerOnStart = True
+       , commands = [ Run Date "%a<fc=#ff0000>, </fc>%b %_d<fc=#ff0000>, </fc>%H:%M" "date" 100
+                    , Run Battery ["-t", "B:<left>", "-H", "60", "-L", "20", "-h", "#00ff00", "-l", "#ff0000"] 1200
+                    , Run Com "sh" ["mail.sh"] "mail" 1200
+                    , Run StdinReader
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "%StdinReader% }{ %mail% %date% <fc=#ff0000>|</fc> %battery%"
+       }
