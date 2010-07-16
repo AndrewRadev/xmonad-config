@@ -2,7 +2,7 @@
 *.o
 history
 tags
-xmonad-x86_64-linux
+xmonad-*-linux
 xmonad.errors
 xmonad_im_layout.hs
 status

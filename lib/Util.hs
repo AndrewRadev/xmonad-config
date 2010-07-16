@@ -2,6 +2,9 @@ module Util where
 
 import XMonad.Core
 
+logKey key = do
+	spawn $ "echo '[" ++ key ++ "]' >> ~/.xmonad/keypresses"
+
 logStatus message = do
 	spawn $ "echo '" ++ message ++ "' >> ~/.xmonad/status"
 

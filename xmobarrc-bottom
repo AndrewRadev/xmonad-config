@@ -4,10 +4,11 @@ Config { font = "xft:Terminus:size=12"
        , position = BottomW L 90
        , lowerOnStart = True
        , commands = [ Run CommandReader "tail -f ~/.xmonad/status" "log"
+                    , Run CommandReader "tail -f ~/.xmonad/keypresses" "keyLog"
                     , Run CommandReader "sh /home/andrew/remind" "remind"
                     , Run MPD ["-t", "<title> <statei> <bar>"] 10
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%log% }{ %remind% <fc=#ff0000>|</fc>%mpd%<fc=#ff0000>|</fc>"
+       , template = "%log% }{ %keyLog% %remind% <fc=#ff0000>|</fc>%mpd%<fc=#ff0000>|</fc>"
        }

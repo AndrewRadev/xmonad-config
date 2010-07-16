@@ -36,6 +36,7 @@ customXPConfig = defaultXPConfig
 customKeys conf = mkKeymap conf (customKeyList conf)
 
 customKeyList conf =
+  map loggerize $
   -- Default keys:
   [ ("M-S-<Return>", spawnLog $ XMonad.terminal conf)
   , ("M-S-p", spawnLog "gmrun")
@@ -95,3 +96,7 @@ customKeyList conf =
   zip (map (\s -> "M-" ++ show s) $ [1..9] ++ [0]) (map (withNthWorkspace W.greedyView) [0..])
   ++
   zip (map (\s -> "M-S-" ++ show s) $ [1..9] ++ [0]) (map (withNthWorkspace W.shift) [0..])
+    where loggerize (key, action) = (key, newAction)
+            where newAction = do
+                    logKey key
+                    action
