@@ -9,6 +9,7 @@ import qualified XMonad.StackSet as W
 customManageHook = manageDocks
   <+> composeAll
     [ className =? "Skype"  --> doF (W.shift "2")
+    , className =? "Pidgin" --> doF (W.shift "2")
     , className =? "Gimp"   --> doF (W.shift "0")
     , className =? "Gimp"   --> unfloat
     , className =? "Zenity" --> doFloat
