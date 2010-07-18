@@ -85,6 +85,9 @@ customKeyList conf =
   , ("M-s p", promptSearch customXPConfig phpManual)
   , ("M-s t", promptSearch customXPConfig thePirateBay)
   , ("M-S-l", spawn "echo Done > ~/.xmonad/status")
+  -- Experimental keymap switching
+  , ("M-<F10> <F10>", spawn "setxkbmap us")
+  , ("M-<F10> <F11>", spawn "setxkbmap bg phonetic")
   , ("M-<F11>", spawn "grabc 2>&1 | xclip -i")
 --  , ("M-<F11>", spawn "zenity --info --text=\"`grabc 2>&1`\"")
   , ("M-<F12>", spawnLogMessage "scrot -e 'mv $f /home/andrew/images/shots/'" "Screenshot taken")
