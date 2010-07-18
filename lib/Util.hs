@@ -3,10 +3,10 @@ module Util where
 import XMonad.Core
 
 logKey key = do
-	spawn $ "echo '<fc=#ff0000>[</fc>" ++ key ++ "<fc=#ff0000>]</fc>' >> ~/.xmonad/keypresses"
+	spawn $ "echo '<fc=#ff0000>[</fc>" ++ key ++ "<fc=#ff0000>]</fc>' >> ~/.xmonad/keypresses-pipe"
 
 logStatus message = do
-	spawn $ "echo '" ++ message ++ "' >> ~/.xmonad/status"
+	spawn $ "echo '" ++ message ++ "' >> ~/.xmonad/status-pipe"
 
 spawnLog prog = do
   pid <- spawnPID prog
