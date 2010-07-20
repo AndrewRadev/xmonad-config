@@ -7,6 +7,7 @@ import qualified XMonad.StackSet as W
 
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.UrgencyHook
+import XMonad.Hooks.DynamicHooks
 
 import XMonad.Layout.Magnifier as Mag
 
@@ -30,7 +31,7 @@ customXPConfig = defaultXPConfig
   , bgColor     = "#000000"
   , fgColor     = "#eeeeee"
   , borderColor = "#000000"
-  , historySize = 0
+  , historySize = 20
   }
 
 customKeys conf = mkKeymap conf (customKeyList conf)
@@ -64,19 +65,29 @@ customKeyList conf =
   , ("M-p", spawnLogMessage "mpc toggle" "Toggle song")
   , ("M-S-.", spawnLogMessage "mpc next" "Next song")
   , ("M-S-,", spawnLogMessage "mpc prev" "Previous song")
+
   , ("M-r", renameWorkspace customXPConfig)
+
   , ("M-<F3>", spawnLogMessage "amixer set 'Master' toggle" "Toggle sound")
   , ("M-<F4>", spawnLogMessage "amixer set 'Master' 5- unmute" "Sound 5-")
   , ("M-<F5>", spawnLogMessage "amixer set 'Master' 5+ unmute" "Sound 5+")
   , ("M-<F8>", spawnLogMessage "brightness down" "Brightness down")
   , ("M-<F9>", spawnLogMessage "brightness up" "Brightness up")
+
   , ("M-<Backspace>", focusUrgent)
   , ("M-n", appendFilePrompt customXPConfig "/home/andrew/Dropbox/gtd/in")
   , ("M-S-x", shellPrompt customXPConfig)
+
   , ("M-x g", spawnLog "gvim")
   , ("M-x f", spawnLog "firefox")
   , ("M-x m", spawnLog "firefox gmail.com")
   , ("M-x t", spawnLog "thunar")
+
+  , ("M-x S-g", spawnBackgroundLog "gvim" "gvim")
+  , ("M-x S-f", spawnBackgroundLog "firefox" "firefox")
+  , ("M-x S-m", spawnBackgroundLog "firefox" "firefox gmail.com")
+  , ("M-x S-t", spawnBackgroundLog "thunar" "thunar")
+
   , ("M-<Escape>", sendMessage ToggleStruts)
   , ("M-s g", promptSearch customXPConfig google)
   , ("M-s h", promptSearch customXPConfig hoogle)
@@ -84,7 +95,6 @@ customKeyList conf =
   , ("M-s y", promptSearch customXPConfig youtube)
   , ("M-s p", promptSearch customXPConfig phpManual)
   , ("M-s t", promptSearch customXPConfig thePirateBay)
-  , ("M-S-l", spawn "echo Done > ~/.xmonad/status")
   -- Experimental keymap switching
   , ("M-<F10> <F10>", spawn "setxkbmap us")
   , ("M-<F10> <F11>", spawn "setxkbmap bg phonetic")

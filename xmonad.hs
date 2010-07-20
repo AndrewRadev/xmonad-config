@@ -5,6 +5,8 @@ import XMonad
 import XMonad.Util.Run      (spawnPipe)
 import XMonad.Util.EZConfig (checkKeymap)
 
+import XMonad.Hooks.DynamicHooks (dynamicMasterHook)
+
 import Keys    (customKeys, customKeyList)
 import Log     (customLogHook)
 import Manage  (customManageHook)
@@ -40,6 +42,6 @@ customConfig logger = defaultConfig
       customStartupHook
       checkKeymap (customConfig logger) (customKeyList (customConfig logger))
   , logHook            = customLogHook logger
-  , manageHook         = customManageHook
+  , manageHook         = customManageHook <+> dynamicMasterHook
   , layoutHook         = customLayoutHook
   }

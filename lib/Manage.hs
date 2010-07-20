@@ -17,5 +17,5 @@ customManageHook = manageDocks
     , isFullscreen --> (doF W.focusDown <+> doFullFloat <+> doF W.focusUp)
     ]
   <+> manageHook defaultConfig
-  where
-    unfloat = ask >>= doF . W.sink
+--  where
+--    unfloat = ask >>= doF . W.sink
