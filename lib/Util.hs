@@ -28,4 +28,4 @@ spawnBackgroundLog cn prog = do
 
 spawnLogMessage prog message = do
   spawn prog
-  logStatus $ ">> " ++ message
+  logStatus $ "<fc=#00ff00>>></fc> " ++ message
