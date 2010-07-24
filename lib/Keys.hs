@@ -17,6 +17,7 @@ import XMonad.Prompt.AppendFile
 
 import XMonad.Actions.Search
 import XMonad.Actions.DynamicWorkspaces
+import XMonad.Actions.GridSelect
 
 import XMonad.Util.Run
 import XMonad.Util.EZConfig
@@ -32,6 +33,12 @@ customXPConfig = defaultXPConfig
   , fgColor     = "#eeeeee"
   , borderColor = "#000000"
   , historySize = 20
+  }
+
+customGSConfig = defaultGSConfig
+  { gs_cellheight = 30
+  , gs_cellwidth = 200
+  , gs_font = "-xos4-terminus-*-*-*-*-14-*-*-*-*-*-*-*"
   }
 
 customKeys conf = mkKeymap conf (customKeyList conf)
@@ -77,6 +84,8 @@ customKeyList conf =
   , ("M-<Backspace>", focusUrgent)
   , ("M-n", appendFilePrompt customXPConfig "/home/andrew/Dropbox/gtd/in")
   , ("M-S-x", shellPrompt customXPConfig)
+
+  , ("M-g", goToSelected customGSConfig)
 
   , ("M-x g", spawnLog "gvim")
   , ("M-x f", spawnLog "firefox")
