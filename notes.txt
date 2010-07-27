@@ -1,4 +1,0 @@
-- replace all 'doF' with withNthWorkspace
-- replace all 'doF' with custom function that uses a workspace map?
-
-- "Background" spawning not working

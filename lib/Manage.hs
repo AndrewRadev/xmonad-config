@@ -10,12 +10,10 @@ customManageHook = manageDocks
   <+> composeAll
     [ className =? "Skype"  --> doF (W.shift "2")
     , className =? "Pidgin" --> doF (W.shift "2")
---    , className =? "Gimp"   --> doF (W.shift "0")
+    , className =? "Gimp"   --> doF (W.shift "0")
     , className =? "Gimp"   --> doFloat
     , className =? "Zenity" --> doFloat
     -- fix flash fullscreen
     , isFullscreen --> (doF W.focusDown <+> doFullFloat <+> doF W.focusUp)
     ]
   <+> manageHook defaultConfig
---  where
---    unfloat = ask >>= doF . W.sink
