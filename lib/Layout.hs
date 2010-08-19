@@ -38,9 +38,6 @@ tabTheme = (theme deiflTheme)
   }
 
 gimpLayout = named "gimp" $ borderResize $ simpleFloat' shrinkText tabTheme
---  $ withIM (1%6) (Role "gimp-toolbox")
---  $ reflectHoriz
---  $ withIM (1%6) (Role "gimp-dock") Full
 
 imLayout = named "im" $ Tall nmaster delta ratio
   where

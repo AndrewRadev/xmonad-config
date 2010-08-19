@@ -23,7 +23,7 @@ spawnLog prog = do
     ++ "<fc=#ff0000>]</fc>"
 
 spawnBackgroundLog cn prog = do
-  oneShotHook (className =? cn) $ doF (W.shift "0")
+  oneShotHook (className =? cn) $ doF (W.shift "9")
   spawnLog prog
 
 spawnLogMessage prog message = do

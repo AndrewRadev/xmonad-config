@@ -45,7 +45,9 @@ customKeys conf = mkKeymap conf (customKeyList conf)
 
 customKeyList conf =
   map loggerize $
-  -- Default keys:
+
+  -- Default keys
+
   [ ("M-S-<Return>", spawnLog $ XMonad.terminal conf)
   , ("M-S-p", spawnLog "gmrun")
   , ("M-S-c", kill)
@@ -68,36 +70,52 @@ customKeyList conf =
       broadcastMessage ReleaseResources
       restart "xmonad" True
     )
-  -- Additional keys:
+
+  -- Additional keys
+
+  -- music management
   , ("M-p", spawnLogMessage "mpc toggle" "Toggle song")
   , ("M-S-.", spawnLogMessage "mpc next" "Next song")
   , ("M-S-,", spawnLogMessage "mpc prev" "Previous song")
 
+  -- workspace renaming (TODO: not working good enough
   , ("M-r", renameWorkspace customXPConfig)
 
+  -- sound & brightness
   , ("M-<F3>", spawnLogMessage "amixer set 'Master' toggle" "Toggle sound")
   , ("M-<F4>", spawnLogMessage "amixer set 'Master' 5- unmute" "Sound 5-")
   , ("M-<F5>", spawnLogMessage "amixer set 'Master' 5+ unmute" "Sound 5+")
   , ("M-<F8>", spawnLogMessage "brightness down" "Brightness down")
   , ("M-<F9>", spawnLogMessage "brightness up" "Brightness up")
 
+  -- TODO: Urgent-ness not really happening anywhere I care about
   , ("M-<Backspace>", focusUrgent)
+
+  -- quick notes
   , ("M-n", appendFilePrompt customXPConfig "/home/andrew/Dropbox/gtd/in")
+
+  -- run stuff
   , ("M-S-x", shellPrompt customXPConfig)
 
+  -- grid select
   , ("M-g", goToSelected customGSConfig)
 
+  -- spawn stuff
   , ("M-x g", spawnLog "gvim")
   , ("M-x f", spawnLog "firefox")
   , ("M-x m", spawnLog "firefox gmail.com")
   , ("M-x t", spawnLog "thunar")
 
-  , ("M-x S-g", spawnBackgroundLog "gvim" "gvim")
-  , ("M-x S-f", spawnBackgroundLog "firefox" "firefox")
-  , ("M-x S-m", spawnBackgroundLog "firefox" "firefox gmail.com")
-  , ("M-x S-t", spawnBackgroundLog "thunar" "thunar")
+  -- spawn stuff on workspace 9
+  , ("M-x S-g", spawnBackgroundLog "Gvim" "gvim")
+  , ("M-x S-f", spawnBackgroundLog "Namoroka" "firefox")
+  , ("M-x S-m", spawnBackgroundLog "Namoroka" "firefox gmail.com")
+  , ("M-x S-t", spawnBackgroundLog "Thunar" "thunar")
 
+  -- more fulscreen-ish, if necessary
   , ("M-<Escape>", sendMessage ToggleStruts)
+
+  -- web searches
   , ("M-s g", promptSearch customXPConfig google)
   , ("M-s h", promptSearch customXPConfig hoogle)
   , ("M-s w", promptSearch customXPConfig wikipedia)
@@ -107,9 +125,14 @@ customKeyList conf =
   -- Experimental keymap switching
   , ("M-<F10> <F10>", spawn "setxkbmap us")
   , ("M-<F10> <F11>", spawn "setxkbmap bg phonetic")
+
+  -- get pixel color in clipboard
   , ("M-<F11>", spawn "grabc 2>&1 | xclip -i")
---  , ("M-<F11>", spawn "zenity --info --text=\"`grabc 2>&1`\"")
+
+  -- screenshots
   , ("M-<F12>", spawnLogMessage "scrot -e 'mv $f /home/andrew/images/shots/'" "Screenshot taken")
+
+  -- magnifying windows
   , ("M-=", sendMessage Mag.Toggle)
   , ("M-S-=", sendMessage Mag.MagnifyMore)
   , ("M--", sendMessage Mag.MagnifyLess)
