@@ -7,11 +7,14 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.DynamicHooks
 
+keypressesPipe = "~/.xmonad/pipes/keypresses"
+statusPipe     = "~/.xmonad/pipes/status"
+
 logKey key = do
-	spawn $ "echo '<fc=#ff0000>[</fc>" ++ key ++ "<fc=#ff0000>]</fc>' >> ~/.xmonad/keypresses-pipe"
+	spawn $ "echo '<fc=#ff0000>[</fc>" ++ key ++ "<fc=#ff0000>]</fc>' >> " ++ keypressesPipe
 
 logStatus message = do
-	spawn $ "echo '" ++ message ++ "' >> ~/.xmonad/status-pipe"
+	spawn $ "echo '" ++ message ++ "' >> " ++ statusPipe
 
 spawnLog prog = do
   pid <- spawnPID prog

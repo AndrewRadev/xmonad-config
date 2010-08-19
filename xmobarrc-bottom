@@ -3,12 +3,13 @@ Config { font = "xft:Terminus:size=12"
        , fgColor = "#eeeeee"
        , position = BottomW L 90
        , lowerOnStart = True
-       , commands = [ Run CommandReader "tail -f ~/.xmonad/status-pipe" "log"
-                    , Run CommandReader "tail -f ~/.xmonad/keypresses-pipe" "keyLog"
+       , commands = [ Run CommandReader "tail -f ~/.xmonad/pipes/status" "actionLog"
+                    , Run CommandReader "tail -f ~/.xmonad/pipes/keypresses" "keyLog"
+                    , Run CommandReader "tail -f ~/.xmonad/pipes/tests" "testLog"
                     , Run CommandReader "sh /home/andrew/remind" "remind"
                     , Run MPD ["-t", "<title> <statei> <bar>"] 10
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%log% }{ %keyLog% %remind% <fc=#ff0000>|</fc>%mpd%<fc=#ff0000>|</fc>"
+       , template = "%actionLog% | %testLog% }{ %keyLog% %remind% <fc=#ff0000>|</fc>%mpd%<fc=#ff0000>|</fc>"
        }
