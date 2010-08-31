@@ -83,8 +83,8 @@ customKeyList conf =
 
   -- sound & brightness
   , ("M-<F3>", spawnLogMessage "amixer set 'Master' toggle" "Toggle sound")
-  , ("M-<F4>", spawnLogMessage "amixer set 'Master' 5- unmute" "Sound 5-")
-  , ("M-<F5>", spawnLogMessage "amixer set 'Master' 5+ unmute" "Sound 5+")
+  , ("M-<F4>", spawnLogMessage "sound 5-" "Sound 5-")
+  , ("M-<F5>", spawnLogMessage "sound 5+" "Sound 5+")
   , ("M-<F8>", spawnLogMessage "brightness down" "Brightness down")
   , ("M-<F9>", spawnLogMessage "brightness up" "Brightness up")
 
