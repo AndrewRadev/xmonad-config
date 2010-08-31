@@ -1,2 +1,12 @@
-Gotcha: If you modify any of the files in 'lib', xmonad won't detect the change
-and won't recompile as necessary. You'll need to touch 'xmonad.hs'.
+Gotchas:
+
+  - If you modify any of the files in 'lib', xmonad won't detect the change and
+    won't recompile as necessary. You'll need to touch 'xmonad.hs'.
+  - The configuration depends on the bleeding edge at the moment of writing and
+    will probably continue to do so. In particular, at the moment, at least one
+    thing in 'lib/Util.hs' will not compile against the last release due to an
+    API change in XMonadContrib.
+  - There are at least two shell scripts being referred to in the configuration
+    ('sound' and 'brightness'), that are not in the repository. That shouldn't
+    be much of a problem, but it's possible there's something more important
+    out there that's machine-specific.
