@@ -11,10 +11,10 @@ keypressesPipe = "~/.xmonad/pipes/keypresses"
 statusPipe     = "~/.xmonad/pipes/status"
 
 logKey key = do
-	spawn $ "echo '<fc=#ff0000>[</fc>" ++ key ++ "<fc=#ff0000>]</fc>' >> " ++ keypressesPipe
+  spawn $ "echo '<fc=#ff0000>[</fc>" ++ key ++ "<fc=#ff0000>]</fc>' >> " ++ keypressesPipe
 
 logStatus message = do
-	spawn $ "echo '" ++ message ++ "' >> " ++ statusPipe
+  spawn $ "echo '" ++ message ++ "' >> " ++ statusPipe
 
 spawnLog prog = do
   pid <- spawnPID prog
